@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "8d18a698-a245-4d1b-8d51-6a61942ab245",
+		"name": "ApiCursos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9282218"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Go\",\r\n  \"category\": \"Backend\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cursos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarPorNome",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cursos?name=Java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cursos"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Java"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarTodos",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cursos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cursos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarCategoria",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cursos?category=Backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cursos"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Backend"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscaPorNomeCategoria",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cursos?name=Java&category=Backend",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cursos"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Java"
+						},
+						{
+							"key": "category",
+							"value": "Backend"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
