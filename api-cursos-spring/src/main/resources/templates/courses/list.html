@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0F172A] text-white min-h-screen">
+
+<div class="max-w-6xl mx-auto p-8">
+
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold text-purple-400">Cursos</h1>
+
+        <a href="/courses/new"
+           class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-sm font-medium transition">
+            + Novo Curso
+        </a>
+    </div>
+
+    <div class="bg-[#1E293B] rounded-xl shadow-lg overflow-hidden">
+        <table class="w-full text-sm">
+
+            <thead class="bg-[#334155] text-gray-300">
+            <tr>
+                <th class="px-4 py-3 text-left">ID</th>
+                <th class="px-4 py-3 text-left">Nome</th>
+                <th class="px-4 py-3 text-left">Categoria</th>
+                <th class="px-4 py-3 text-left">Status</th>
+                <th class="px-4 py-3 text-left">Ações</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="course : ${courses}"
+                class="border-t border-gray-700 hover:bg-[#334155] transition">
+
+                <td class="px-4 py-3 text-gray-400 text-xs"
+                    th:text="${course.id}"></td>
+
+                <td class="px-4 py-3 font-medium"
+                    th:text="${course.name}"></td>
+
+                <td class="px-4 py-3 text-gray-300"
+                    th:text="${course.category}"></td>
+
+                <td class="px-4 py-3">
+                    <span th:text="${course.active ? 'Ativo' : 'Inativo'}"
+                          th:classappend="${course.active} ? 'text-green-400' : 'text-red-400'">
+                    </span>
+                </td>
+
+                <td class="px-4 py-3">
+                    <a th:href="@{/courses/{id}(id=${course.id})}"
+                       class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                        Ver detalhes
+                    </a>
+                </td>
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

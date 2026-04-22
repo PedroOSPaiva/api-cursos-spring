@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${isEdit} ? 'Editar Curso' : 'Novo Curso'">Curso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0F172A] text-white min-h-screen">
+
+<div class="max-w-xl mx-auto p-8">
+
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold text-purple-400"
+            th:text="${isEdit} ? 'Editar Curso' : 'Novo Curso'">
+            Novo Curso
+        </h1>
+        <p class="text-gray-400 text-sm mt-1"
+           th:text="${isEdit} ? 'Atualize os dados do curso' : 'Preencha os dados abaixo'">
+            Preencha os dados abaixo
+        </p>
+    </div>
+
+    <div class="bg-[#1E293B] p-6 rounded-xl shadow-lg">
+
+        <form th:action="${isEdit} ? @{/courses/{id}(id=${course.id})} : @{/courses}"
+              th:object="${course}"
+              method="post"
+              class="space-y-5">
+
+            <div>
+                <label class="block text-sm text-gray-300 mb-1">Nome</label>
+                <input type="text"
+                       th:field="*{name}"
+                       class="w-full bg-[#0F172A] border border-gray-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"/>
+            </div>
+
+            <div>
+                <label class="block text-sm text-gray-300 mb-1">Categoria</label>
+                <input type="text"
+                       th:field="*{category}"
+                       class="w-full bg-[#0F172A] border border-gray-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"/>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <input type="checkbox"
+                       th:field="*{active}"
+                       class="accent-purple-500 w-4 h-4"/>
+                <label class="text-sm text-gray-300">Curso ativo</label>
+            </div>
+
+            <div class="flex justify-between items-center mt-6">
+                <a th:href="${isEdit} ? @{/courses/{id}(id=${course.id})} : @{/courses}"
+                   class="text-gray-400 hover:text-white text-sm">
+                    ← Voltar
+                </a>
+
+                <button type="submit"
+                        class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-sm font-medium transition"
+                        th:text="${isEdit} ? 'Salvar alterações' : 'Salvar'">
+                    Salvar
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

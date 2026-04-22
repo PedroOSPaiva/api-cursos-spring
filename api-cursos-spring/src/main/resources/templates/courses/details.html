@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Curso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0F172A] text-white min-h-screen">
+
+<div class="max-w-xl mx-auto p-8">
+
+    <h1 class="text-3xl font-bold text-purple-400 mb-6">
+        Detalhes do Curso
+    </h1>
+
+    <div class="bg-[#1E293B] p-6 rounded-xl shadow-lg space-y-4">
+
+        <div>
+            <span class="text-gray-400 text-sm">ID:</span>
+            <p th:text="${course.id}" class="text-xs text-gray-300"></p>
+        </div>
+
+        <div>
+            <span class="text-gray-400 text-sm">Nome:</span>
+            <p th:text="${course.name}" class="text-lg font-medium"></p>
+        </div>
+
+        <div>
+            <span class="text-gray-400 text-sm">Categoria:</span>
+            <p th:text="${course.category}"></p>
+        </div>
+
+        <div>
+            <span class="text-gray-400 text-sm">Status:</span>
+            <p th:text="${course.active ? 'Ativo' : 'Inativo'}"
+               th:classappend="${course.active} ? 'text-green-400' : 'text-red-400'">
+            </p>
+        </div>
+
+    </div>
+
+    <div class="flex justify-between items-center mt-6">
+        <a href="/courses"
+           class="text-gray-400 hover:text-white text-sm">
+            ← Voltar
+        </a>
+
+        <div class="flex gap-3">
+            <a th:href="@{/courses/{id}/edit(id=${course.id})}"
+               class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg text-sm font-medium transition">
+                Editar
+            </a>
+
+            <form th:action="@{/courses/{id}/delete(id=${course.id})}" method="post"
+                  onsubmit="return confirm('Tem certeza que deseja excluir este curso?');">
+                <button type="submit"
+                        class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+                    Excluir
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
